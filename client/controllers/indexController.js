@@ -2,14 +2,21 @@ class IndexController{
     constructor($scope, $location, indexFactory, indexService){
         this.indexFactory = indexFactory;
         this.indexService = indexService;
+        this.scope = $scope;
     }
 
     async factoryGetName(){
-        return console.log(await this.indexFactory.getName());
+        let name = await this.indexFactory.getName();
+        this.scope.$apply(()=>{
+            this.scope.name = `Factory ${name.data}`;
+        });
     }
 
     async serviceGetName(){
-        return console.log(await this.indexService.getName());
+        let name = await this.indexService.getName();
+        this.scope.$apply(()=>{
+            this.scope.name = `Service ${name.data}`;
+        });
     }
 }
 
