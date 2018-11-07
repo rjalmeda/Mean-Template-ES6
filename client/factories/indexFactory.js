@@ -9,4 +9,6 @@ class IndexFactory{
     }
 }
 
-export default IndexFactory;
+export default function($http){
+    return new IndexFactory($http);
+};

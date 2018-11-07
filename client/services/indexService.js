@@ -9,4 +9,6 @@ class IndexService{
     }
 }
 
-export default IndexService;
+export default function($http){
+    return new IndexService($http);
+};
