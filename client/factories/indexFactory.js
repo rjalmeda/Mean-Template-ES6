@@ -4,8 +4,13 @@ class IndexFactory{
     }
 
     async getName(){
-        console.log("factory!");
-        return await this.http.get('/getName');
+        let data = await this.http.get('/name');
+        return data.data.name;
+    }
+
+    async postName(username){
+        await this.http.post('/name', {username});
+        return;
     }
 }
 

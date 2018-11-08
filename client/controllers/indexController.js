@@ -5,18 +5,17 @@ class IndexController{
         this.scope = $scope;
     }
 
-    async factoryGetName(){
-        let name = await this.indexFactory.getName();
-        this.scope.$apply(()=>{
-            this.scope.name = `Factory ${name.data}`;
-        });
+    async getName(){
+        console.log("here");
+        this.scope.name = await this.indexFactory.getName();
+        return this.scope.$apply();
     }
 
-    async serviceGetName(){
-        let name = await this.indexService.getName();
-        this.scope.$apply(()=>{
-            this.scope.name = `Service ${name.data}`;
-        });
+    async postName(){
+        console.log("here!");
+        await this.indexFactory.postName(this.scope.username);
+        this.scope.name = `Added ${this.scope.username}`;
+        return this.scope.$apply();
     }
 }
 
